@@ -20,7 +20,40 @@ function searchByPerformer(performerName){
         console.log(searchUrl);
         return response.json();
     }).then(function(data){
-        console.log(data);
+     
+
+//Construct card for all the results from the response
+
+for(i=1;i<data.performers.length; i++){
+   
+var divrow=$("<div>").attr("class","row");
+var divcolm=$("<div>").attr("class","col s12 m7");
+
+var divCard=$("<div>").attr("class","card");
+var divImg=$("<div>").attr("class","card-image");
+var divContent=$("<div>").attr("class","card-content").append($("<p>"));
+var divAction=$("<div>").attr("class","card-action").append($("<a>"));
+
+
+var imgTag=$("<img>");
+var getImage=data.performers[i].image;
+imgTag.attr("src",getImage);
+imgTag.attr("style","height:300 px")
+divImg.append(imgTag);
+var title=data.performers[i].name;
+var category=data.performers[i].type;
+divContent.find("p").text(`${category}\n${title}`);
+
+var ticketurl=data.performers[i].url;
+divAction.find("a").attr("href",ticketurl).text("Click this link for more details");
+
+divCard.append(divImg,divContent,divAction);
+divcolm.append(divCard);
+divrow.append(divcolm);
+$(".container #cardsection").append(divrow);
+
+}
+
     })
 
 
@@ -67,8 +100,6 @@ searchByCurrentLocation();
 
 // <!-- Search for location  and distance-->
 
-// https://api.seatgeek.com/2/events/?venue.city=New%20York&client_id=Mzk2OTE5NzR8MTcwNjczNjQ3MS45OTA5Mjc3
-
 function searchByCityChoice(city){
     var searchUrl=`${apiUrl}events/?venue.city=${city}&${authKey}`;
     
@@ -93,7 +124,7 @@ searchByCityChoice("London");
 
 
 
-// <!-- Display section of the events -->
+
 
 
 
