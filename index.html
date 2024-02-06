@@ -41,18 +41,81 @@
     <div class="navbar">
       <div class="search-bar">
         <input type="text" placeholder="Find an Artist">
+        <button type="submit">Search</button>
 
       </div>
       <div class="search-bar">
         <input type="text" placeholder="What's On Near Me">
+
+      
+
+        <style>
+          /* Style for the slider */
+          .slider {
+              -webkit-appearance: none;
+              width: 100%;
+              height: 25px;
+              background: #981919;
+              outline: none;
+              opacity: 1;
+              -webkit-transition: .2s;
+              transition: opacity .2s;
+          }
+      
+          /* Style for the slider thumb */
+          .slider::-webkit-slider-thumb {
+              -webkit-appearance: none;
+              appearance: none;
+              width: 25px;
+              height: 25px;
+              background: #844caf;
+              cursor: pointer;
+          }
+      
+          .slider::-moz-range-thumb {
+              width: 25px;
+              height: 25px;
+              background: #24ad28;
+              cursor: pointer;
+          }
+      </style>
+      </head>
+      <body>
+      
+      <p>Select Your Location:</p>
+      
+      <!-- Slider -->
+      <input type="range" min="0" max="100" value="50" class="slider" id="locationSlider">
+      
+      <!-- Display selected location -->
+      <p>Selected Location: <span id="selectedLocation"></span></p>
+      
+      <script>
+          // Get the slider element
+          var slider = document.getElementById("locationSlider");
+      
+          // Get the span element to display the selected location
+          var selectedLocation = document.getElementById("selectedLocation");
+      
+          // Display the initial value of the slider
+          selectedLocation.innerHTML = slider.value;
+      
+          // Update the displayed value when slider value changes
+          slider.oninput = function() {
+              selectedLocation.innerHTML = this.value;
+          }
+      </script>
+        <button type="submit">Search</button>
         
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Search a City">
+        <button type="submit">Search</button>
        
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Event by Category">
+        <button type="submit">Search</button>
         
       </div>
     </div>
