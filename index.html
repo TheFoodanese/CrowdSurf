@@ -40,8 +40,8 @@
 
     <div class="navbar">
       <div class="search-bar">
-        <input type="text" placeholder="Find an Artist">
-        <button type="submit">Search</button>
+        <input type="text" placeholder="Find an Artist" id="performerInput">
+        <button type="submit" id="performerBtn">Search</button>
 
       </div>
       <div class="search-bar">
@@ -103,19 +103,22 @@
           // Update the displayed value when slider value changes
           slider.oninput = function() {
               selectedLocation.innerHTML = this.value;
+              
+              return selectedLocation.innerHTML
+
           }
       </script>
         <button type="submit">Search</button>
         
       </div>
       <div class="search-bar">
-        <input type="text" placeholder="Search a City">
-        <button type="submit">Search</button>
+        <input type="text" placeholder="Search a City" id="cityInput">
+        <button type="submit" id="cityBtn">Search</button>
        
       </div>
       <div class="search-bar">
-        <input type="text" placeholder="Event by Category">
-        <button type="submit">Search</button>
+        <input type="text" placeholder="Event by Category" id="categoryInput">
+        <button type="submit" id="categoryBtn">Search</button>
         
       </div>
     </div>
