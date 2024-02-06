@@ -22,10 +22,21 @@ var categoryInput=document.getElementById("categoryInput");
 var cityBtn=document.getElementById("cityBtn");
 var cityInput=document.getElementById("cityInput");
 var performerName=performerInput.value;
-var city=cityBtn.value;
+var city=cityInput.value;
 var type=categoryInput.value;
+console.log(cityInput.value);
+console.log(authKey);
+console.log(miles);
+console.log(categoryInput);
 
-var miles=document.getElementById("selectedLocation").value;
+
+function getCityName(){
+    var cityElement=document.getElementById("cityInput");
+    var cityName=cityElement.value;
+    searchByCityChoice(cityName);
+}
+
+var miles=document.getElementById("selectedLocation").textContent;
 
 performerBtn.addEventListener("click",searchByPerformer);
 cityBtn.addEventListener("click",searchByCityChoice);
@@ -137,13 +148,18 @@ searchByCurrentLocation();
 
 // <!-- Search for location  and distance-->
 
-function searchByCityChoice(city){
+function searchByCityChoice(cityName){
     var searchUrl="";
     if(miles!==undefined){
-        searchUrl=`${apiUrl}events/?venue.city=${city}&${authKey}`;
+        searchUrl=`${apiUrl}events/?venue.city=${cityName}&${authKey}`;
+        
     }
-     searchUrl=`${apiUrl}events/?venue.city=${city}&range=${miles}mi&${authKey}`;
-    
+     searchUrl=`${apiUrl}events/?venue.city=${cityName}&range=${miles}mi&${authKey}`;
+     console.log(searchUrl);
+     console.log(miles);
+     console.log(city);
+    //https://api.seatgeek.com/2/events/
+    //https://api.seatgeek.com/2/events/?&geoip=true&client_id=Mzk2OTE5NzR8MTcwNjczNjQ3MS45OTA5Mjc3
 
   fetch(searchUrl)
   .then(function(response){
