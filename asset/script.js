@@ -11,6 +11,19 @@ var authKey=`client_id=${apiKey}`;
 
 
 // <!-- Search for events by performers eg taylor swift  -->
+//add listing_count.gt=0 for ticket listing and average_price
+//sort sort=score.desc
+
+//calling functions based on user input search
+var performerBtn=document.getElementById("");
+var performerInput=document.getElementById("")
+var categoryDisplay=document.getElementById("");
+var cityDisplay=document.getElementById("");
+
+var performerChoice=performerInput.ariaValueMax()
+
+
+
 
 function searchByPerformer(performerName){
       var searchUrl=`${apiUrl}performers?q=${performerName}&${authKey}`;
