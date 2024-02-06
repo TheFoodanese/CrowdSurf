@@ -11,6 +11,8 @@ var authKey=`client_id=${apiKey}`;
 
 
 // <!-- Search for events by performers eg taylor swift  -->
+//add listing_count.gt=0 for ticket listing and average_price
+//sort sort=score.desc
 
 function searchByPerformer(performerName){
       var searchUrl=`${apiUrl}performers?q=${performerName}&${authKey}`;
