@@ -8,7 +8,19 @@ var endDate=dayjs().format("YYYY-MM-DD");
 var apiUrl="https://api.seatgeek.com/2/";
 var authKey=`client_id=${apiKey}`;
 
+    // Get the slider element
+    var slider = document.getElementById("locationSlider");
+      
+    // Get the span element to display the selected location
+    var selectedLocation = document.getElementById("selectedLocation");
 
+    // Display the initial value of the slider
+    selectedLocation.innerHTML = slider.value;
+
+    // Update the displayed value when slider value changes
+    slider.oninput = function() {
+        selectedLocation.innerHTML = this.value;
+    }
 
 // <!-- Search for events by performers eg taylor swift  -->
 //add listing_count.gt=0 for ticket listing and average_price

@@ -46,39 +46,9 @@
       </div>
       <div class="search-bar">
         <input type="text" placeholder="What's On Near Me">
-
+       
       
 
-        <style>
-          /* Style for the slider */
-          .slider {
-              -webkit-appearance: none;
-              width: 100%;
-              height: 25px;
-              background: #981919;
-              outline: none;
-              opacity: 1;
-              -webkit-transition: .2s;
-              transition: opacity .2s;
-          }
-      
-          /* Style for the slider thumb */
-          .slider::-webkit-slider-thumb {
-              -webkit-appearance: none;
-              appearance: none;
-              width: 25px;
-              height: 25px;
-              background: #844caf;
-              cursor: pointer;
-          }
-      
-          .slider::-moz-range-thumb {
-              width: 25px;
-              height: 25px;
-              background: #24ad28;
-              cursor: pointer;
-          }
-      </style>
       </head>
       <body>
       
@@ -89,22 +59,7 @@
       
       <!-- Display selected location -->
       <p>Selected Location: <span id="selectedLocation"></span></p>
-      
-      <script>
-          // Get the slider element
-          var slider = document.getElementById("locationSlider");
-      
-          // Get the span element to display the selected location
-          var selectedLocation = document.getElementById("selectedLocation");
-      
-          // Display the initial value of the slider
-          selectedLocation.innerHTML = slider.value;
-      
-          // Update the displayed value when slider value changes
-          slider.oninput = function() {
-              selectedLocation.innerHTML = this.value;
-          }
-      </script>
+  
         <button type="submit">Search</button>
         
       </div>
@@ -125,7 +80,7 @@
 
     <p>Find the latest events near you.</p>
     <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/G4Y9JoafHNY?si=mpeEP8WNj-WKKo3J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/G4Y9JoafHNY?si=mpeEP8WNj-WKKo3J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" ></iframe>
     </div>
   </div>
 
@@ -156,9 +111,35 @@
 <div id="cardsection"></div>
   </section>
   <a class="waves-effect waves-light btn" id="clearbtn">Clear</a>
+
+  <!--footer-->
   <div class="footer">
-    <p>Footer</p>
+    <Footer>
+      <ul class="linear-list">
+        <li>
+            <a href="">Code of Conduct</a>
+        </li>
+        <li>
+            <a href="">Terms</a>
+        </li>
+        <li>
+            <a href="">Privacy</a>
+        </li>
+        <li>
+            <a href="">Event sponsorship</a>
+        </li>
+        <li>
+            <a href="">contact us</a>
+        </li>
+    </ul>
+    <a href="">
+        <img class="logo" src="./asset/images/GitHub-invertocat.svg">
+    </a>
+    <p class="copyright">© Group 10. All rights reserved.</p>
   </div>
+</footer>
+ 
+ <!--footer end-->
 
     <!-- Compiled and minified JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
