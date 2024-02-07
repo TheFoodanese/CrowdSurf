@@ -37,7 +37,7 @@ body {
     }
 
     .navbar {
-      background-color: #333;
+      background-color: #202a35;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -79,15 +79,39 @@ body {
 /* Style the content */
 .content {
   background-color:#f5c4c0;
-  padding: 10px;
-  height: 1000px; /* Should be removed. Only for demonstration */
+  padding: 29px;
+  width: 50%;
 }
 
 /* Style the footer */
-.footer {
-  background-color: #df0c0c;
-  padding: 10px;
-  height: 50px;
+
+  footer {
+    background-color: #202a35;
+    text-align: center;
+    display: inline-block;
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    color: #959da5;
+  }
+  footer ul {
+    width: 100%;
+    float: left;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+  footer .logo {
+    width: 45px;
+    margin-bottom: 10px;
+  }
+  footer .copyright {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+  ul.linear-list li {
+    display: inline-block;
+    padding: 10px;
 }
 
 
