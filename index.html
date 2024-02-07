@@ -41,7 +41,7 @@
     <div class="navbar">
       <div class="search-bar">
         <input type="text" placeholder="Find an Artist" id="performerInput">
-        <button onclick="getPerformerName()"  id="performerBtn">Search</button>
+        <button onclick="searchByPerformer()"  id="performerBtn">Search</button>
 
       </div>
       <div class="search-bar">
@@ -82,13 +82,13 @@
       </head>
       <body>
       
-      <p>Select Your Location:</p>
+      <!-- <p>Select Your Location:</p>-->
       
       <!-- Slider -->
       <input type="range" min="0" max="100" value="50" class="slider" id="locationSlider">
       
       <!-- Display selected location -->
-      <p>Selected Location: <span id="selectedLocation"></span></p>
+      <p>Selected Location: <span id="selectedLocation"></span></p> 
       
       <script>
           // Get the slider element
@@ -118,7 +118,7 @@
       </div>
       <div class="search-bar">
         <input type="text" placeholder="Event by Category" id="categoryInput">
-        <button onclick="getCategory()" id="categoryBtn">Search</button>
+        <button onclick="searchByCategory()" id="categoryBtn">Search</button>
         
       </div>
     </div>

@@ -1,61 +1,114 @@
 var apiKey="Mzk2OTE5NzR8MTcwNjczNjQ3MS45OTA5Mjc3";
-var startDate=dayjs().format("YYYY-MM-DD");
-var endDate=dayjs().format("YYYY-MM-DD");
-
 
 //Shortened Api url with API key for reusability. 
 
 var apiUrl="https://api.seatgeek.com/2/";
 var authKey=`client_id=${apiKey}`;
 
+document.addEventListener("DOMContentLoaded", function(){
+    //selecting the button elements
+    var performerBtn=document.getElementById("performerBtn");
+    var categoryBtn=document.getElementById("categoryBtn");
+    var cityBtn=document.getElementById("cityBtn");
+    var sliderBtn=document.getElementById("locationSlider");
+    var miles=document.getElementById("selectedLocation").textContent;
+    //selecting the input elements
+    var performerInput=document.getElementById("performerInput");
+    var sliderInput=document. getElementById("selectedLocation");
+    var categoryInput=document.getElementById("categoryInput"); 
+    var cityInput=document.getElementById("cityInput");
 
+    performerBtn.addEventListener("click",searchByPerformer);
+    cityBtn.addEventListener("click",getCityName);
+    categoryBtn.addEventListener("click",searchByCategory);
+    sliderBtn.addEventListener("input",searchByCityChoice);
 
-// <!-- Search for events by performers eg taylor swift  -->
-//add listing_count.gt=0 for ticket listing and average_price
-//sort sort=score.desc
-
-//calling functions based on user input search
-var performerBtn=document.getElementById("performerBtn");
-var performerInput=document.getElementById("performerInput");
-var categoryBtn=document.getElementById("categoryBtn");
-var categoryInput=document.getElementById("categoryInput"); 
-var cityBtn=document.getElementById("cityBtn");
-var cityInput=document.getElementById("cityInput");
-var performerName=performerInput.value;
-var city=cityInput.value;
-var type=categoryInput.value;
-console.log(cityInput.value);
-console.log(authKey);
-console.log(miles);
-console.log(categoryInput);
-
-
+   
 function getCityName(){
     var cityElement=document.getElementById("cityInput");
     var cityName=cityElement.value;
-    searchByCityChoice(cityName);
+     
+var newInput=cityName.split(" ");
+var newCityAPI=" ";
+
+for(var k=0;k<newInput.length;k++){
+
+    newCityAPI+=newInput[k];
+    if(k!==newInput.length-1){
+
+        newCityAPI+="%20";
+}
 }
 
-var miles=document.getElementById("selectedLocation").textContent;
 
-performerBtn.addEventListener("click",searchByPerformer);
-cityBtn.addEventListener("click",searchByCityChoice);
-categoryBtn.addEventListener("click",searchByCategory);
 
-function searchByPerformer(performerName){
-    performerName.preventDefault();
-var newInput=performerName.split(" ");
-if(" "<newInput.length){
-for(var k=0;k<newInput.length;k++){
-    performerName+=newInput+"%20";
-}}
+    searchByCityChoice(newCityAPI);
+}
+// <!-- Search for location  and distance-->
+
+function searchByCityChoice(newCityAPI){
+
+    var searchUrl="";
+    if(miles!==undefined){
+        searchUrl=`${apiUrl}events/?venue.city=${newCityAPI}&${authKey}`;
+        
+    }
+     searchUrl=`${apiUrl}events/?venue.city=${newCityAPI}&range=${miles}mi&${authKey}`;
     
-console.log(performerName);
+   
 
+  fetch(searchUrl)
+  .then(function(response){
+      console.log(searchUrl);
+      return response.json();
+  }).then(function(data){
+    createCards(data);
+      
 
+  })
 
+}
+//Search by category
 
-      var searchUrl=`${apiUrl}performers?q=${performerName}&${authKey}`;
+function searchByCategory(event){
+    event.preventDefault();
+   
+    var type = categoryInput.value;
+
+    var searchUrl=`${apiUrl}events?q=${type}&${authKey}`;
+ 
+   fetch(searchUrl)
+   .then(function(response){
+       console.log(searchUrl);
+       return response.json();
+   }).then(function(data){
+     //   console.log(data);
+ 
+       createCards(data);
+        
+ 
+   })
+ 
+ 
+ }
+// Search by performer
+
+function searchByPerformer(event){
+    event.preventDefault();
+    var performerName = performerInput.value;  
+var newInput=performerName.split(" ");
+var result=" ";
+
+for(var k=0;k<newInput.length;k++){
+
+    result+=newInput[k];
+    if(k!==newInput.length-1){
+
+    result+="%20";
+}
+}
+
+      var searchUrl=`${apiUrl}performers?q=${result}&${authKey}`;
 
     fetch(searchUrl)
     .then(function(response){
@@ -100,94 +153,10 @@ $(".container #cardsection").append(divrow);
 
 
 }
-//  searchByPerformer("Taylor%20Swift");
-
-// <!-- Search for events by category eg concert or sport  -->
-function searchByCategory(type){
-   type.preventDefault();
-   console.log(type);
-    var searchUrl=`${apiUrl}events?q=${type}&${authKey}`;
-
-  fetch(searchUrl)
-  .then(function(response){
-      console.log(searchUrl);
-      return response.json();
-  }).then(function(data){
-    //   console.log(data);
-
-      createCards(data);
-       
-
-  })
-
-
-}
- //searchByCategory("Music");
-
-// <!-- Events near user's current location-->
-
-function searchByCurrentLocation(){
-    var searchUrl=`${apiUrl}events/?&geoip=true&${authKey}`;
-    
-
-  fetch(searchUrl)
-  .then(function(response){
-      console.log(searchUrl);
-      return response.json();
-  }).then(function(data){
-      console.log(data);
-  })
-
-
-}
-searchByCurrentLocation();
 
 
 
-
-
-// <!-- Search for location  and distance-->
-
-function searchByCityChoice(cityName){
-    var searchUrl="";
-    if(miles!==undefined){
-        searchUrl=`${apiUrl}events/?venue.city=${cityName}&${authKey}`;
-        
-    }
-     searchUrl=`${apiUrl}events/?venue.city=${cityName}&range=${miles}mi&${authKey}`;
-     console.log(searchUrl);
-     console.log(miles);
-     console.log(city);
-    //https://api.seatgeek.com/2/events/
-    //https://api.seatgeek.com/2/events/?&geoip=true&client_id=Mzk2OTE5NzR8MTcwNjczNjQ3MS45OTA5Mjc3
-
-  fetch(searchUrl)
-  .then(function(response){
-      console.log(searchUrl);
-      return response.json();
-  }).then(function(data){
-    createCards(data);
-      
-
-
-  })
-
-
-}
-// searchByCityChoice("Toronto");
-
-
-
-
-
-var clearbtn=document.querySelector("#clearbtn");
-clearbtn.addEventListener("click",clear);
-
-function clear(event){
-    event.preventDefault();
-    $("#cardsection").empty();
-
-}
+});
 
 //Create card function reusable bease on api response
 function createCards(data){
@@ -231,5 +200,14 @@ function createCards(data){
 
 
 
+
+}
+//Clear results
+var clearbtn=document.querySelector("#clearbtn");
+clearbtn.addEventListener("click",clear);
+
+function clear(event){
+    event.preventDefault();
+    $("#cardsection").empty();
 
 }
