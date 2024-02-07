@@ -117,7 +117,7 @@ for(var k=0;k<newInput.length;k++){
     }).then(function(data){
      
 
-//Construct card for all the results from the response
+//Construct card for performer results from the response
 
 for(i=1;i<data.performers.length; i++){
    
