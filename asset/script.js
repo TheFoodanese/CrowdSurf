@@ -216,3 +216,22 @@ function clear(event){
     $("#cardsection").empty();
 
 }
+
+
+// // //This is a news api to show current entertaining events happening 
+// var newsApiKey="03a11ab6a54d4a8b9145bf38cbc40c3d";
+// const newsUrl="https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + "https://newsapi.org/v2/top-headlines?category=entertainment&language=en&pageSize=5&sortBy=popularity&apiKey="+newsApiKey;
+// //var req=new Request(newsUrl)
+// //fetch(url, () => {});
+// fetch(newsUrl, {})
+//   .then(function(response) {
+//     return response.json();
+//   })
+//   .then(function(data) {
+//     console.log(data);
+//     console.log(data.articles[1].title);
+//     // $("#entertainment .newstitle").text(data.articles[1].title);
+//   });
+ 
+ 
+ 
