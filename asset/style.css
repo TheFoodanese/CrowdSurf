@@ -29,7 +29,7 @@ body {
   text-decoration: none;
 }
 
-<style>
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
@@ -69,19 +69,6 @@ body {
       background-color: #45a049;
     }
 
-  </style>
-</head>
-<body>
-
-<div class="navbar">
-  <div class="search-bar">
-    <input type="text" placeholder="Find an Artist">
-    <button type="submit">Search</button>
-  </div>
-  <div class="search-bar">
-    <input type="text" placeholder="What's On Near Me">
-  </div>
-</div>
 
 /* Change color on hover */
 .topnav a:hover {
