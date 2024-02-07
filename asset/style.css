@@ -83,21 +83,11 @@ body {
         transition: opacity 0s;
     }
 
-    /* Style for the slider thumb */
-    .slider::-webkit-slider-thumb {
-        appearance: auto;
-        width: 100px;
-        height: 25px;
-        background: #844caf;
-        cursor: pointer;
-    }
+  
 
-    .slider::-moz-range-thumb {
-        width: 100px;
-        height: 25px;
-        background: #ad2388;
-        cursor: pointer;
-    }
+    
+
+  
 /* Change color on hover */
 .topnav a:hover {
   background-color: #e98944;
