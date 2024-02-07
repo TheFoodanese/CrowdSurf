@@ -45,7 +45,7 @@
 
       </div>
       <div class="search-bar">
-        <input type="text" placeholder="What's On Near Me">
+        <!-- <input type="text" placeholder="What's On Near Me"> -->
 
       
 
@@ -82,14 +82,18 @@
       </head>
       <body>
       
-      <!-- <p>Select Your Location:</p>-->
+    
+      <div class="search-bar">
+        <input type="text" placeholder="Search a City" id="cityInput">
       
+       
+      </div>
       <!-- Slider -->
       <input type="range" min="0" max="100" value="50" class="slider" id="locationSlider">
       
       <!-- Display selected location -->
-      <p>Selected Location: <span id="selectedLocation"></span></p> 
-      
+      <p>Selected Location: <span id="selectedLocation"></span> km</p> 
+      <button onclick="getCityName()" id="cityBtn">Search</button>
       <script>
           // Get the slider element
           var slider = document.getElementById("locationSlider");
@@ -108,14 +112,10 @@
 
           }
       </script>
-        <button type="submit">Search</button>
+       
         
       </div>
-      <div class="search-bar">
-        <input type="text" placeholder="Search a City" id="cityInput">
-        <button onclick="getCityName()" id="cityBtn">Search</button>
-       
-      </div>
+     
       <div class="search-bar">
         <input type="text" placeholder="Event by Category" id="categoryInput">
         <button onclick="searchByCategory()" id="categoryBtn">Search</button>
