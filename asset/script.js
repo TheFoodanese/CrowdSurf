@@ -10,18 +10,25 @@ document.addEventListener("DOMContentLoaded", function(){
     var performerBtn=document.getElementById("performerBtn");
     var categoryBtn=document.getElementById("categoryBtn");
     var cityBtn=document.getElementById("cityBtn");
-    var sliderBtn=document.getElementById("locationSlider");
-    var miles=document.getElementById("selectedLocation").textContent;
+   
+   
     //selecting the input elements
     var performerInput=document.getElementById("performerInput");
+    var sliderRange=document.getElementById("locationSlider")
     var sliderInput=document. getElementById("selectedLocation");
     var categoryInput=document.getElementById("categoryInput"); 
-    var cityInput=document.getElementById("cityInput");
+  
 
     performerBtn.addEventListener("click",searchByPerformer);
     cityBtn.addEventListener("click",getCityName);
     categoryBtn.addEventListener("click",searchByCategory);
-    sliderBtn.addEventListener("input",searchByCityChoice);
+    sliderRange.addEventListener("input",updateSliderValue);
+
+
+function updateSliderValue(){
+    sliderInput.textContent = sliderRange.value;
+
+}
 
    
 function getCityName(){
@@ -40,20 +47,18 @@ for(var k=0;k<newInput.length;k++){
 }
 }
 
-
-
     searchByCityChoice(newCityAPI);
 }
 // <!-- Search for location  and distance-->
 
 function searchByCityChoice(newCityAPI){
-
+    var km=sliderRange.value;
     var searchUrl="";
-    if(miles!==undefined){
+    if(km!==undefined){
         searchUrl=`${apiUrl}events/?venue.city=${newCityAPI}&${authKey}`;
         
     }
-     searchUrl=`${apiUrl}events/?venue.city=${newCityAPI}&range=${miles}mi&${authKey}`;
+     searchUrl=`${apiUrl}events/?venue.city=${newCityAPI}&range=${km}km&${authKey}`;
     
    
 
