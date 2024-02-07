@@ -27,17 +27,35 @@ var authKey=`client_id=${apiKey}`;
 //sort sort=score.desc
 
 //calling functions based on user input search
-var performerBtn=document.getElementById("");
-var performerInput=document.getElementById("")
-var categoryDisplay=document.getElementById("");
-var cityDisplay=document.getElementById("");
+var performerBtn=document.getElementById("performerBtn");
+var performerInput=document.getElementById("performerInput");
+var categoryBtn=document.getElementById("categoryBtn");
+var categoryInput=document.getElementById("categoryInput"); 
+var cityBtn=document.getElementById("cityBtn");
+var cityInput=document.getElementById("cityInput");
+var performerName=performerInput.value;
+var city=cityBtn.value;
+var type=categoryInput.value;
 
-var performerChoice=performerInput.ariaValueMax()
+var miles=document.getElementById("selectedLocation").value;
 
-
-
+performerBtn.addEventListener("click",searchByPerformer);
+cityBtn.addEventListener("click",searchByCityChoice);
+categoryBtn.addEventListener("click",searchByCategory);
 
 function searchByPerformer(performerName){
+    performerName.preventDefault();
+var newInput=performerName.split(" ");
+if(" "<newInput.length){
+for(var k=0;k<newInput.length;k++){
+    performerName+=newInput+"%20";
+}}
+    
+console.log(performerName);
+
+
+
+
       var searchUrl=`${apiUrl}performers?q=${performerName}&${authKey}`;
 
     fetch(searchUrl)
@@ -83,10 +101,12 @@ $(".container #cardsection").append(divrow);
 
 
 }
- searchByPerformer("Taylor%20Swift");
+//  searchByPerformer("Taylor%20Swift");
 
 // <!-- Search for events by category eg concert or sport  -->
 function searchByCategory(type){
+   type.preventDefault();
+   console.log(type);
     var searchUrl=`${apiUrl}events?q=${type}&${authKey}`;
 
   fetch(searchUrl)
@@ -103,7 +123,7 @@ function searchByCategory(type){
 
 
 }
- searchByCategory("Music");
+ //searchByCategory("Music");
 
 // <!-- Events near user's current location-->
 
@@ -130,7 +150,11 @@ searchByCurrentLocation();
 // <!-- Search for location  and distance-->
 
 function searchByCityChoice(city){
-    var searchUrl=`${apiUrl}events/?venue.city=${city}&${authKey}`;
+    var searchUrl="";
+    if(miles!==undefined){
+        searchUrl=`${apiUrl}events/?venue.city=${city}&${authKey}`;
+    }
+     searchUrl=`${apiUrl}events/?venue.city=${city}&range=${miles}mi&${authKey}`;
     
 
   fetch(searchUrl)
@@ -146,7 +170,7 @@ function searchByCityChoice(city){
 
 
 }
-searchByCityChoice("Toronto");
+// searchByCityChoice("Toronto");
 
 
 
