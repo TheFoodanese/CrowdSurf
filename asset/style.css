@@ -23,11 +23,44 @@ body {
 .topnav a {
   float: left;
   display: block;
-  color: #f2f2f2;
+  color: #d1bfbf;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
+
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} 
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-right: 5px;
+}
+
+.search-bar button {
+  padding: 8px 15px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #ffffff;
+} 
 
 /* Change color on hover */
 .topnav a:hover {
@@ -39,7 +72,7 @@ body {
 .content {
   background-color:#f5c4c0;
   padding: 10px;
-  height: 1000px; /* Should be removed. Only for demonstration */
+  height: 800px; /* Should be removed. Only for demonstration */
 }
 
 /* Style the footer */
