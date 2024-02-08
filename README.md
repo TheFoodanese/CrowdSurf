@@ -13,7 +13,7 @@ CrowdSurf is a web-based platform designed to help users discover exciting event
 - User Reviews: Read user-generated reviews and ratings to make informed decisions about which events to attend. **Coming soon
 
 ## Getting Started
-To get started with CrowdSurf, simply visit our website [CrowdSurf](https://thefoodanese.github.io/G10-Project-1/) and you can start exploring events, purchasing tickets, and planning your next adventure.
+To get started with CrowdSurf, simply visit our website [CrowdSurf]([https://thefoodanese.github.io/CrowdSurf/]) and you can start exploring events, purchasing tickets, and planning your next adventure.
 
 ## Installation
 CrowdSurf is a web-based platform and does not require any installation. Simply access the website through your preferred web browser to start using it.
