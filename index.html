@@ -5,11 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./asset/style.css">
-  <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
-
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
    
   <title>CrowdSurf</title>
 </head>
@@ -18,26 +15,19 @@
   <nav class="nav-extended">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo">CrowdSurf</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">Menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="login.html">Login</a></li>
-        <li><a href="basket.html">Basket</a></li>
-        <li><a href="faqs.html">FAQs</a></li>
-      </ul>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">Events</i></a>
+     
     </div>
-
+<!-- Tabs to access specific searches for the API events -->
     <ul class="tabs tabs-transparent">
       <li class="tab"><a href="active" onclick="searchByCurrentLocation()" id="live">Live Events</a></li>
       <li class="tab"><a href="active"  id="music">Music</a></li>
       <li class="tab"><a href="active"  id="comedy">Comedy</a></li>
       <li class="tab"><a href="active"  id="sport">Sports</a></li>
     </ul>
-  </div>
-</nav>
+    </nav>
 
-
-
-
+<!-- User specific searches for the API events -->
     <div class="navbar"
     style= "height: 80px">
       <div class="search-bar">
@@ -46,26 +36,19 @@
 
       </div>
       <div class="search-bar">
-        <!-- <input type="text" placeholder="What's On Near Me"> -->
-
-    
-    
+        
       <div class="search-bar">
         <input type="text" placeholder="Search a City" id="cityInput">
-      
-       
+             
       </div>
       <!-- Slider -->
       <input type="range" min="0" max="100" value="50" class="slider" id="locationSlider"
-      style=
-        "border:none"
- >
+      style="border:none">
        
-    
-      
+          
       
       <!-- Display selected location -->
-      <p>Selected Location: <span id="selectedLocation"></span> km</p> 
+      <p>Range: <span id="selectedLocation"></span> km</p> 
       <button onclick="getCityName()" id="cityBtn">Search</button>
       <script>
 
@@ -107,7 +90,7 @@
   </div>
 
 
-  <a class="waves-effect waves-light btn btn-floatin " id="clearbtn" >Clear</a>
+  <a class="waves-effect waves-light btn btn-floatin " style="background-color: #c790af;" id="clearbtn" >Clear</a>
   
 
   <!-- Search for events by performers eg taylor swift  -->
@@ -119,7 +102,6 @@
 <div id="cardsection"></div>
   </section>
 
-  
     
 
    
@@ -129,24 +111,8 @@
   <footer>
   <div class="footer">
     
-      <ul class="linear-list">
-        <li>
-            <a href="">Code of Conduct</a>
-        </li>
-        <li>
-            <a href="">Terms</a>
-        </li>
-        <li>
-            <a href="">Privacy</a>
-        </li>
-        <li>
-            <a href="">Event sponsorship</a>
-        </li>
-        <li>
-            <a href="">contact us</a>
-        </li>
-    </ul>
-    <a href="">
+ 
+    <a href="https://github.com/TheFoodanese/G10-Project-1">
         <img class="logo" src="./asset/images/GitHub-invertocat.svg">
     </a>
     <p class="copyright">© Group 10. All rights reserved.</p>
