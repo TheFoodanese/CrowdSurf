@@ -61,19 +61,23 @@ function updateSliderValue(){
    
 function getCityName(){
     var cityElement=document.getElementById("cityInput");
-    var cityName=cityElement.value;
+    var cityName=cityElement.value.trim();
      
 var newInput=cityName.split(" ");
 var newCityAPI=" ";
-
+if(newInput.length>1){
 for(var k=0;k<newInput.length;k++){
-
+  newCityAPI += encodeURIComponent(newInput[k]);
     newCityAPI+=newInput[k];
     if(k!==newInput.length-1){
 
         newCityAPI+="%20";
+    }
+  }
+}else{
+  newCityAPI = encodeURIComponent(cityName);
 }
-}
+
 
     searchByCityChoice(newCityAPI);
 }
