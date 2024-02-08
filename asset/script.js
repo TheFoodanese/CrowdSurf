@@ -127,7 +127,7 @@ for(var k=0;k<newInput.length;k++){
 for(i=1;i<data.performers.length; i++){
    
 var divrow=$("<div>").attr("class","row");
-var divcolm=$("<div>").attr("class","col s12 m7");
+var divcolm=$("<div>").attr("class","col s6 m6");
 
 var divCard=$("<div>").attr("class","card");
 var divImg=$("<div>").attr("class","card-image");
@@ -179,7 +179,7 @@ function createCards(data){
          var performerUrl=performers.url
          //Create Card
          var divrow=$("<div>").attr("class","row");
-         var divcolm=$("<div>").attr("class","col s12 m7");
+         var divcolm=$("<div>").attr("class","col s6 m6");
          var divCard=$("<div>").attr("class","card");
          var divImg=$("<div>").attr("class","card-image");
          var divContent=$("<div>").attr("class","card-content").append($("<p>"));
@@ -201,7 +201,7 @@ function createCards(data){
      }
 
 
-
+     
 
 
 
@@ -218,20 +218,5 @@ function clear(event){
 }
 
 
-// // //This is a news api to show current entertaining events happening 
-// var newsApiKey="03a11ab6a54d4a8b9145bf38cbc40c3d";
-// const newsUrl="https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + "https://newsapi.org/v2/top-headlines?category=entertainment&language=en&pageSize=5&sortBy=popularity&apiKey="+newsApiKey;
-// //var req=new Request(newsUrl)
-// //fetch(url, () => {});
-// fetch(newsUrl, {})
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(data) {
-//     console.log(data);
-//     console.log(data.articles[1].title);
-//     // $("#entertainment .newstitle").text(data.articles[1].title);
-//   });
- 
- 
- 
+
+
