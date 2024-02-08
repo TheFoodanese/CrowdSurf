@@ -1,3 +1,19 @@
+ // Get the slider element
+ var slider = document.getElementById("locationSlider");
+      
+ // Get the span element to display the selected location
+ var selectedLocation = document.getElementById("selectedLocation");
+
+ // Display the initial value of the slider
+ selectedLocation.innerHTML = slider.value;
+
+ // Update the displayed value when slider value changes
+ slider.oninput = function() {
+     selectedLocation.innerHTML = this.value;
+     
+     return selectedLocation.innerHTML
+ }
+
 var apiKey="Mzk2OTE5NzR8MTcwNjczNjQ3MS45OTA5Mjc3";
 
 //Shortened Api url with API key for reusability. 
@@ -18,12 +34,24 @@ document.addEventListener("DOMContentLoaded", function(){
     var sliderInput=document. getElementById("selectedLocation");
     var categoryInput=document.getElementById("categoryInput"); 
   
-
-    performerBtn.addEventListener("click",searchByPerformer);
+   //adding action listener for each seach button
+       performerBtn.addEventListener("click",searchByPerformer);
     cityBtn.addEventListener("click",getCityName);
     categoryBtn.addEventListener("click",searchByCategory);
     sliderRange.addEventListener("input",updateSliderValue);
-
+    $("#live").on("click",searchByCurrentLocation);
+    $("#music").on("click",function(event) {
+        event.preventDefault();
+        searchByCategoryStatic("Music");
+      });
+    $("#comedy").on("click",function(event) {
+        event.preventDefault();
+        searchByCategoryStatic("Comedy");
+      });
+    $("#sport").on("click",function(event) {
+        event.preventDefault();
+        searchByCategoryStatic("Sport");
+      });
 
 function updateSliderValue(){
     sliderInput.textContent = sliderRange.value;
@@ -52,6 +80,8 @@ for(var k=0;k<newInput.length;k++){
 // <!-- Search for location  and distance-->
 
 function searchByCityChoice(newCityAPI){
+    
+    $("#cardsection").empty();
     var km=sliderRange.value;
     var searchUrl="";
     if(km!==undefined){
@@ -75,9 +105,9 @@ function searchByCityChoice(newCityAPI){
 }
 //Search by category
 
-function searchByCategory(event){
-    event.preventDefault();
-   
+function searchByCategory(type){
+    
+    $("#cardsection").empty();
     var type = categoryInput.value;
 
     var searchUrl=`${apiUrl}events?q=${type}&${authKey}`;
@@ -96,10 +126,35 @@ function searchByCategory(event){
  
  
  }
+
+ function searchByCategoryStatic(category){
+
+    $("#cardsection").empty();
+   
+    var searchUrl=`${apiUrl}events?q=${category}&${authKey}`;
+ 
+   fetch(searchUrl)
+   .then(function(response){
+       console.log(searchUrl);
+       return response.json();
+   }).then(function(data){
+     console.log(data);
+ 
+       createCards(data);
+        
+ 
+   })
+ 
+ 
+ }
+
+
+
 // Search by performer
 
 function searchByPerformer(event){
     event.preventDefault();
+    $("#cardsection").empty();
     var performerName = performerInput.value;  
 var newInput=performerName.split(" ");
 var result=" ";
@@ -123,43 +178,64 @@ for(var k=0;k<newInput.length;k++){
      
 
 //Construct card for performer results from the response
+for (i = 1; i < data.performers.length; i++) {
+    var divrow = $("<div>").attr("class", "row");
+    var divcolm1 = $("<div>").attr("class", "col s6 m6").attr("id", "column1");
+    var divcolm2 = $("<div>").attr("class", "col s6 m6").attr("id", "column2");
+    var divCard = $("<div>").attr("class", "card");
+    var divImg = $("<div>").attr("class", "card-image");
+    var divContent = $("<div>").attr("class", "card-content").append($("<p>"));
+    var divAction = $("<div>").attr("class", "card-action").append($("<a>"));
+    var imgTag = $("<img>");
+    var getImage = data.performers[i].image;
+    imgTag.attr("src", getImage);
+    imgTag.attr("style", "height:300px");
+    divImg.append(imgTag);
+    var title = data.performers[i].name;
+    var category = data.performers[i].type;
+    divContent.find("p").text(`${category}\n${title}`);
+    var ticketurl = data.performers[i].url;
+    divAction.find("a").attr("href", ticketurl).text("Click this link for more details");
+    divCard.append(divImg, divContent, divAction);
+    if (i % 2 === 0) {
+      divcolm1.append(divCard);
+    } else {
+      divcolm2.append(divCard);
+    }
+    divrow.append(divcolm1,divcolm2);
+    $(".container #cardsection").append(divrow);
+  }
 
-for(i=1;i<data.performers.length; i++){
-   
-var divrow=$("<div>").attr("class","row");
-var divcolm=$("<div>").attr("class","col s12 m7");
-
-var divCard=$("<div>").attr("class","card");
-var divImg=$("<div>").attr("class","card-image");
-var divContent=$("<div>").attr("class","card-content").append($("<p>"));
-var divAction=$("<div>").attr("class","card-action").append($("<a>"));
 
 
-var imgTag=$("<img>");
-var getImage=data.performers[i].image;
-imgTag.attr("src",getImage);
-imgTag.attr("style","height:300 px")
-divImg.append(imgTag);
-var title=data.performers[i].name;
-var category=data.performers[i].type;
-divContent.find("p").text(`${category}\n${title}`);
-
-var ticketurl=data.performers[i].url;
-divAction.find("a").attr("href",ticketurl).text("Click this link for more details");
-
-divCard.append(divImg,divContent,divAction);
-divcolm.append(divCard);
-divrow.append(divcolm);
-$(".container #cardsection").append(divrow);
-
-}
 
     })
 
 
 }
 
-
+//Search live events near user
+function searchByCurrentLocation(event){
+    event.preventDefault();
+    $("#cardsection").empty();
+    var searchUrl=`${apiUrl}events?geoip=true&range=200mi&${authKey}`;
+    
+  
+  fetch(searchUrl)
+  .then(function(response){
+      console.log(searchUrl);
+      return response.json();
+  }).then(function(data){
+     
+    createCards(data);
+  
+  
+  
+  
+  })
+  
+  
+  }
 
 });
 
@@ -179,7 +255,8 @@ function createCards(data){
          var performerUrl=performers.url
          //Create Card
          var divrow=$("<div>").attr("class","row");
-         var divcolm=$("<div>").attr("class","col s12 m7");
+         var divcolm1 = $("<div>").attr("class", "col s6 m6").attr("id", "column1");
+    var divcolm2 = $("<div>").attr("class", "col s6 m6").attr("id", "column2");
          var divCard=$("<div>").attr("class","card");
          var divImg=$("<div>").attr("class","card-image");
          var divContent=$("<div>").attr("class","card-content").append($("<p>"));
@@ -191,8 +268,12 @@ function createCards(data){
          divContent.find("p").text(`${performerName},${eventType},${eventDate},${eventAddress},${eventCity}` );
      
          divCard.append(divImg,divContent,divAction);
-         divcolm.append(divCard);
-         divrow.append(divcolm);
+         if (i % 2 === 0) {
+            divcolm1.append(divCard);
+          } else {
+            divcolm2.append(divCard);
+          }
+          divrow.append(divcolm1,divcolm2);
          $(".container #cardsection").append(divrow);
      
      
@@ -201,7 +282,7 @@ function createCards(data){
      }
 
 
-
+     
 
 
 
@@ -218,20 +299,5 @@ function clear(event){
 }
 
 
-// // //This is a news api to show current entertaining events happening 
-// var newsApiKey="03a11ab6a54d4a8b9145bf38cbc40c3d";
-// const newsUrl="https://cors-anywhere-jung-48d4feb9d097.herokuapp.com/" + "https://newsapi.org/v2/top-headlines?category=entertainment&language=en&pageSize=5&sortBy=popularity&apiKey="+newsApiKey;
-// //var req=new Request(newsUrl)
-// //fetch(url, () => {});
-// fetch(newsUrl, {})
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(data) {
-//     console.log(data);
-//     console.log(data.articles[1].title);
-//     // $("#entertainment .newstitle").text(data.articles[1].title);
-//   });
- 
- 
- 
+
+
