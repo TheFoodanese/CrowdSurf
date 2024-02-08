@@ -27,10 +27,10 @@
     </div>
 
     <ul class="tabs tabs-transparent">
-      <li class="tab"><a href="active">Live Events</a></li>
-      <li class="tab"><a href="active">Music</a></li>
-      <li class="tab"><a href="active">Comedy</a></li>
-      <li class="tab"><a href="active">Sports</a></li>
+      <li class="tab"><a href="active" onclick="searchByCurrentLocation()" id="live">Live Events</a></li>
+      <li class="tab"><a href="active"  id="music">Music</a></li>
+      <li class="tab"><a href="active"  id="comedy">Comedy</a></li>
+      <li class="tab"><a href="active"  id="sport">Sports</a></li>
     </ul>
   </div>
 </nav>
@@ -38,7 +38,8 @@
 
 
 
-    <div class="navbar">
+    <div class="navbar"
+    style= "height: 80px">
       <div class="search-bar">
         <input type="text" placeholder="Find an Artist" id="performerInput">
         <button onclick="searchByPerformer()"  id="performerBtn">Search</button>
@@ -47,39 +48,7 @@
       <div class="search-bar">
         <!-- <input type="text" placeholder="What's On Near Me"> -->
 
-      
-
-        <style>
-          /* Style for the slider */
-          .slider {
-              -webkit-appearance: none;
-              width: 100%;
-              height: 25px;
-              background: #981919;
-              outline: none;
-              opacity: 1;
-              -webkit-transition: .2s;
-              transition: opacity .2s;
-          }
-      
-          /* Style for the slider thumb */
-          .slider::-webkit-slider-thumb {
-              -webkit-appearance: none;
-              appearance: none;
-              width: 25px;
-              height: 25px;
-              background: #844caf;
-              cursor: pointer;
-          }
-      
-          .slider::-moz-range-thumb {
-              width: 25px;
-              height: 25px;
-              background: #24ad28;
-              cursor: pointer;
-          }
-      </style>
-     
+    
     
       <div class="search-bar">
         <input type="text" placeholder="Search a City" id="cityInput">
@@ -87,12 +56,19 @@
        
       </div>
       <!-- Slider -->
-      <input type="range" min="0" max="100" value="50" class="slider" id="locationSlider">
+      <input type="range" min="0" max="100" value="50" class="slider" id="locationSlider"
+      style=
+        "border:none"
+ >
+       
+    
+      
       
       <!-- Display selected location -->
       <p>Selected Location: <span id="selectedLocation"></span> km</p> 
       <button onclick="getCityName()" id="cityBtn">Search</button>
       <script>
+
           // Get the slider element
           var slider = document.getElementById("locationSlider");
       
@@ -116,7 +92,7 @@
      
       <div class="search-bar">
         <input type="text" placeholder="Event by Category" id="categoryInput">
-        <button onclick="searchByCategory()" id="categoryBtn">Search</button>
+        <button onclick="searchByCategory(event)" id="categoryBtn">Search</button>
         
       </div>
     </div>
@@ -126,9 +102,11 @@
 
     <p>Find the latest events near you.</p>
     <div class="video-container">
-      <iframe width="250" height="315" src="https://www.youtube.com/embed/G4Y9JoafHNY?si=mpeEP8WNj-WKKo3J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <iframe width="100%" height="315" src="https://www.youtube.com/embed/G4Y9JoafHNY?si=mpeEP8WNj-WKKo3J" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
   </div>
+
+
   <a class="waves-effect waves-light btn btn-floatin " id="clearbtn" >Clear</a>
   
 
@@ -142,15 +120,46 @@
   </section>
 
   
+    
+
+   
+  
+
+  <!--footer -->
+  <footer>
   <div class="footer">
-    <p>Footer</p>
+    
+      <ul class="linear-list">
+        <li>
+            <a href="">Code of Conduct</a>
+        </li>
+        <li>
+            <a href="">Terms</a>
+        </li>
+        <li>
+            <a href="">Privacy</a>
+        </li>
+        <li>
+            <a href="">Event sponsorship</a>
+        </li>
+        <li>
+            <a href="">contact us</a>
+        </li>
+    </ul>
+    <a href="">
+        <img class="logo" src="./asset/images/GitHub-invertocat.svg">
+    </a>
+    <p class="copyright">© Group 10. All rights reserved.</p>
   </div>
+</footer>
+
+ <!--footer end-->
+  
 
     <!-- Compiled and minified JavaScript -->
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>        
-  <script src= "./asset/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src= "./asset/script.js"></script>
  
   
 </body>
