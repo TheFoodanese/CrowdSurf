@@ -71,7 +71,10 @@ body {
     .search-bar button:hover {
       background-color: #45a049;
     }
-
+    ::placeholder {
+      color:red;
+      opacity: 1; 
+    }
 
 
     /* Style for the slider */
@@ -110,13 +113,13 @@ body {
 /* Style the footer */
 
   footer {
-    background-color: #202a35;
+    background-color: #ee6e73;
     text-align: center;
     display: inline-block;
     padding: 10px;
     width: 100%;
     height: auto;
-    color: #959da5;
+    color: #0A0A0A;
   }
   footer ul {
     width: 100%;
