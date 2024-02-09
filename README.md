@@ -1,4 +1,4 @@
-# CrowdSurf- Events Seach Application
+# CrowdSurf- Events Search Application
 
 ### Welcome to CrowdSurf
 CrowdSurf is a web-based platform designed to help users discover exciting events and purchase tickets conveniently based on their location. Whether you're looking for live concerts, sports, theater shows, or local festivals, CrowdSurf has got you covered. With its intuitive interface and powerful search features, finding the perfect event and securing your tickets has never been easier.
